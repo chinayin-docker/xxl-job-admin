@@ -8,6 +8,7 @@
 FROM chinayin/maven:3-jdk-8-bullseye-slim AS builder
 
 ENV XXL_VERSION 2.3.0
+ENV XXL_GIT_TAG 2.3.0
 
 RUN set -eux \
     ## install packages
@@ -17,9 +18,8 @@ RUN set -eux \
 WORKDIR /app
 
 RUN set -eux \
-    && git clone https://github.com/xuxueli/xxl-job.git -b ${XXL_VERSION} . \
-    && mvn -B package --file pom.xml \
-    && tree .
+    && git clone https://github.com/xuxueli/xxl-job.git -b ${XXL_GIT_TAG} . \
+    && mvn -B package --file pom.xml
 
 FROM chinayin/openjdk:8-jre-bullseye-slim
 
