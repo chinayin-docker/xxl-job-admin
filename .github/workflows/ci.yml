@@ -16,6 +16,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Set variables
         id: vars
+        working-directory: ${{ matrix.os }}
         run: |
           echo ::set-output name=repository::${GITHUB_ACTOR}/$(basename ${GITHUB_REPOSITORY})
           echo ::set-output name=version::$(grep ' XXL_VERSION ' Dockerfile | awk -F '[. ]' '{print $3"."$4"."$5}')
