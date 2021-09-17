@@ -18,9 +18,9 @@ jobs:
         id: vars
         run: |
           echo ::set-output name=repository::${GITHUB_ACTOR}/$(basename ${GITHUB_REPOSITORY})
-          echo ::set-output name=version::$(grep ' XXL_VERSION ' Dockerfile | awk -F '[. ]'  '{print $3"."$4"."$5}')
-          echo ::set-output name=minor_version::$(grep ' XXL_VERSION ' Dockerfile | awk -F '[. ]'  '{print $3"."$4}')
-          echo ::set-output name=major_version::$(grep ' XXL_VERSION ' Dockerfile | awk -F '[. ]'  '{print $3}')
+          echo ::set-output name=version::$(grep ' XXL_VERSION ' Dockerfile | awk -F '[. ]' '{print $3"."$4"."$5}')
+          echo ::set-output name=minor_version::$(grep ' XXL_VERSION ' Dockerfile | awk -F '[. ]' '{print $3"."$4}')
+          echo ::set-output name=major_version::$(grep ' XXL_VERSION ' Dockerfile | awk -F '[. ]' '{print $3}')
           echo ::set-output name=workdir::${{ matrix.os }}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
